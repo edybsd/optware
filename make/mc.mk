@@ -5,10 +5,10 @@
 ###########################################################
 
 MC_SITE=http://www.midnight-commander.org/downloads
-MC_VERSION=4.7.5.5
-MC_SOURCE=mc-$(MC_VERSION).tar.bz2
+MC_VERSION=4.8.13
+MC_SOURCE=mc-$(MC_VERSION).tar.xz
 MC_DIR=mc-$(MC_VERSION)
-MC_UNZIP=bzcat
+MC_UNZIP=xzcat
 MC_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
 MC_DESCRIPTION=Midnight Commander File Manager
 MC_SECTION=utilities
@@ -25,7 +25,7 @@ MC_IPK_VERSION=1
 # MC_PATCHES should list any patches, in the the order in
 # which they should be applied to the source code.
 #
-#MC_PATCHES=$(MC_SOURCE_DIR)/src-man2hlp.c.patch
+MC_PATCHES=$(MC_SOURCE_DIR)/glibcompat.c.patch
 
 #
 # If the compilation of the package requires additional

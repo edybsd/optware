@@ -5,7 +5,7 @@
 ###########################################################
 
 GDBM_SITE=ftp://ftp.gnu.org/gnu/gdbm
-GDBM_VERSION=1.8.3
+GDBM_VERSION=1.9.1
 GDBM_LIB_VERSION=3.0.0
 GDBM_SOURCE=gdbm-$(GDBM_VERSION).tar.gz
 GDBM_DIR=gdbm-$(GDBM_VERSION)
@@ -20,7 +20,8 @@ GDBM_CONFLICTS=
 
 GDBM_IPK_VERSION=4
 
-GDBM_PATCHES=$(GDBM_SOURCE_DIR)/Makefile.patch
+#GDBM_PATCHES=$(GDBM_SOURCE_DIR)/Makefile.patch
+GDBM_PATCHES=
 
 GDBM_BUILD_DIR=$(BUILD_DIR)/gdbm
 GDBM_SOURCE_DIR=$(SOURCE_DIR)/gdbm
@@ -37,7 +38,7 @@ gdbm-source: $(DL_DIR)/$(GDBM_SOURCE) $(GDBM_PATCHES)
 $(GDBM_BUILD_DIR)/.configured: $(DL_DIR)/$(GDBM_SOURCE) $(GDBM_PATCHES) make/gdbm.mk
 	rm -rf $(BUILD_DIR)/$(GDBM_DIR) $(GDBM_BUILD_DIR)
 	$(GDBM_UNZIP) $(DL_DIR)/$(GDBM_SOURCE) | tar -C $(BUILD_DIR) -xvf -
-	cat $(GDBM_PATCHES) | patch -d $(BUILD_DIR)/$(GDBM_DIR) -p1
+#	cat $(GDBM_PATCHES) | patch -d $(BUILD_DIR)/$(GDBM_DIR) -p1
 	mv $(BUILD_DIR)/$(GDBM_DIR) $(GDBM_BUILD_DIR)
 	(cd $(GDBM_BUILD_DIR); \
 		$(TARGET_CONFIGURE_OPTS) \

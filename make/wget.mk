@@ -16,7 +16,7 @@
 # You should change all these variables to suit your package.
 #
 WGET_SITE=http://ftp.gnu.org/pub/gnu/wget
-WGET_VERSION=1.12
+WGET_VERSION=1.16
 WGET_SOURCE=wget-$(WGET_VERSION).tar.gz
 WGET_DIR=wget-$(WGET_VERSION)
 WGET_UNZIP=zcat
@@ -136,7 +136,7 @@ endif
 	touch $@
 
 $(WGET-SSL_BUILD_DIR)/.configured: $(DL_DIR)/$(WGET_SOURCE) $(WGET_PATCHES) make/wget.mk
-	$(MAKE) libidn-stage openssl-stage
+	$(MAKE) libidn-stage openssl-stage gnutls-stage
 	rm -rf $(BUILD_DIR)/$(WGET_DIR) $(@D)
 	$(WGET_UNZIP) $(DL_DIR)/$(WGET_SOURCE) | tar -C $(BUILD_DIR) -xvf -
 #	cat $(WGET_PATCHES) | patch -d $(BUILD_DIR)/$(WGET_DIR) -p1
@@ -153,7 +153,7 @@ endif
 		--build=$(GNU_HOST_NAME) \
 		--host=$(GNU_TARGET_NAME) \
 		--target=$(GNU_TARGET_NAME) \
-		--with-ssl \
+		--with-ssl=openssl \
 		--with-libssl-prefix=$(STAGING_PREFIX) \
 		--with-libidn-prefix=$(STAGING_PREFIX) \
 		--prefix=/opt \

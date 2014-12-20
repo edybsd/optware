@@ -16,7 +16,7 @@
 #
 
 LIBXML2_SITE=ftp://xmlsoft.org/libxml2
-LIBXML2_VERSION=2.7.8
+LIBXML2_VERSION=2.9.2
 LIBXML2_SOURCE=libxml2-$(LIBXML2_VERSION).tar.gz
 LIBXML2_DIR=libxml2-$(LIBXML2_VERSION)
 LIBXML2_UNZIP=zcat
@@ -46,7 +46,7 @@ LIBXML2_PATCHES=$(LIBXML2_SOURCE_DIR)/configure.patch
 # compilation or linking flags, then list them here.
 #
 LIBXML2_CPPFLAGS=
-LIBXML2_LDFLAGS=
+LIBXML2_LDFLAGS= -lz
 
 #
 # LIBXML2_BUILD_DIR is the directory in which the build is done.
@@ -109,7 +109,7 @@ $(LIBXML2_BUILD_DIR)/.configured: $(DL_DIR)/$(LIBXML2_SOURCE) $(LIBXML2_PATCHES)
 		--host=$(GNU_TARGET_NAME) \
 		--target=$(GNU_TARGET_NAME) \
 		--prefix=/opt \
-		--disable-nls \
+		--with-zlib=$(STAGING_LIB_DIR) \
 		--disable-static \
 		--enable-shared \
 		--without-python \

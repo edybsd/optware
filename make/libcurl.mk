@@ -27,10 +27,10 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 LIBCURL_SITE= http://curl.haxx.se/download
-LIBCURL_VERSION=7.24.0
-LIBCURL_SOURCE=curl-$(LIBCURL_VERSION).tar.gz
+LIBCURL_VERSION=7.39.0
+LIBCURL_SOURCE=curl-$(LIBCURL_VERSION).tar.bz2
 LIBCURL_DIR=curl-$(LIBCURL_VERSION)
-LIBCURL_UNZIP=zcat
+LIBCURL_UNZIP=bzcat
 LIBCURL_MAINTAINER=NSLU2 Linux <nslu2-linux@yahoogroups.com>
 LIBCURL_DESCRIPTION=Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 LIBCURL_SECTION=libs

@@ -1,0 +1,13 @@
+--- mc-4.8.13/lib/glibcompat.c.orig	2014-12-16 22:29:13.592285550 -0300
++++ mc-4.8.13/lib/glibcompat.c	2014-12-16 22:30:49.834136798 -0300
+@@ -153,9 +153,7 @@
+     char *message;
+     GError *ret_value;
+ 
+-    va_start (ap, format);
+-    message = g_strdup_vprintf (format, ap);
+-    va_end (ap);
++    message = g_strdup_vprintf (format, args);
+ 
+     ret_value = g_error_new_literal (domain, code, message);
+     g_free (message);

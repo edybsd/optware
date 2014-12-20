@@ -36,9 +36,10 @@
 #
 # You should change all these variables to suit your package.
 #
-LIBDB_SITE=http://download.oracle.com/berkeley-db
-LIBDB_VERSION=4.2.52
-LIBDB_LIB_VERSION=4.2
+#LIBDB_SITE=http://download.oracle.com/berkeley-db
+LIBDB_SITE=http://download.oracle.com/otn/berkeley-db
+LIBDB_VERSION=6.1.19
+LIBDB_LIB_VERSION=6.1
 LIBDB_SOURCE=db-$(LIBDB_VERSION).tar.gz
 LIBDB_DIR=db-$(LIBDB_VERSION)
 LIBDB_UNZIP=zcat

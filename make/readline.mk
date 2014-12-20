@@ -27,7 +27,7 @@
 # "NSLU2 Linux" other developers will feel free to edit.
 #
 READLINE_SITE=http://ftp.gnu.org/pub/gnu/readline
-READLINE_VERSION=6.1
+READLINE_VERSION=6.3
 READLINE_SOURCE=readline-$(READLINE_VERSION).tar.gz
 READLINE_DIR=readline-$(READLINE_VERSION)
 READLINE_UNZIP=zcat
@@ -40,7 +40,7 @@ READLINE_DEPENDS= ncurses
 #
 # READLINE_IPK_VERSION should be incremented when the ipk changes.
 #
-READLINE_IPK_VERSION=2
+READLINE_IPK_VERSION=1
 
 #
 # READLINE_CONFFILES should be a list of user-editable files
@@ -126,6 +126,7 @@ endif
 		CPPFLAGS="$(STAGING_CPPFLAGS) $(READLINE_CPPFLAGS)" \
 		LDFLAGS="$(STAGING_LDFLAGS) $(READLINE_LDFLAGS)" \
 		./configure \
+		bash_cv_wcwidth_broken=yes \
 		--build=$(GNU_HOST_NAME) \
 		--host=$(GNU_TARGET_NAME) \
 		--target=$(GNU_TARGET_NAME) \

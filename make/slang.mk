@@ -20,8 +20,10 @@
 # from your name or email address.  If you leave MAINTAINER set to
 # "NSLU2 Linux" other developers will feel free to edit.
 #
-SLANG_SITE=ftp://space.mit.edu/pub/davis/slang/v2.2
-SLANG_VERSION ?= 2.2.3
+#SLANG_SITE=ftp://space.mit.edu/pub/davis/slang/v2.2
+SLANG_SITE=http://www.jedsoft.org/releases/slang
+#SLANG_VERSION ?= 2.2.3
+SLANG_VERSION ?= 2.3.0
 SLANG_SOURCE=slang-$(SLANG_VERSION).tar.bz2
 SLANG_DIR=slang-$(SLANG_VERSION)
 SLANG_UNZIP=bzcat
