@@ -21,8 +21,10 @@
 # from your name or email address.  If you leave MAINTAINER set to
 # "NSLU2 Linux" other developers will feel free to edit.
 #
-CYRUS-SASL_SITE=ftp://ftp.andrew.cmu.edu/pub/cyrus-mail
-CYRUS-SASL_VERSION=2.1.23
+#CYRUS-SASL_SITE=ftp://ftp.andrew.cmu.edu/pub/cyrus-mail
+CYRUS-SASL_SITE=ftp://ftp.cyrusimap.org/cyrus-sasl
+#CYRUS-SASL_VERSION=2.1.23
+CYRUS-SASL_VERSION=2.1.26
 CYRUS-SASL_SOURCE=cyrus-sasl-$(CYRUS-SASL_VERSION).tar.gz
 CYRUS-SASL_DIR=cyrus-sasl-$(CYRUS-SASL_VERSION)
 CYRUS-SASL_UNZIP=zcat
@@ -43,9 +45,11 @@ CYRUS-SASL_CONFFILES=/opt/etc/init.d/S52saslauthd
 # CYRUS-SASL_PATCHES should list any patches, in the the order in
 # which they should be applied to the source code.
 #
-CYRUS-SASL_PATCHES=$(CYRUS-SASL_SOURCE_DIR)/Makefile.in.patch \
+#CYRUS-SASL_PATCHES=$(CYRUS-SASL_SOURCE_DIR)/Makefile.in.patch \
   $(CYRUS-SASL_SOURCE_DIR)/configure-powerpc.patch \
   $(CYRUS-SASL_SOURCE_DIR)/include-Makefile.in.patch
+
+CYRUS-SASL_PATCHES=$(CYRUS-SASL_SOURCE_DIR)/Makefile.in.patch
 
 CYRUS-SASL_BUILD_DIR=$(BUILD_DIR)/cyrus-sasl
 CYRUS-SASL_SOURCE_DIR=$(SOURCE_DIR)/cyrus-sasl

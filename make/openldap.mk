@@ -20,7 +20,7 @@
 # You should change all these variables to suit your package.
 #
 OPENLDAP_SITE=ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release
-OPENLDAP_VERSION=2.3.43
+OPENLDAP_VERSION=2.4.40
 OPENLDAP_SOURCE=openldap-$(OPENLDAP_VERSION).tgz
 OPENLDAP_DIR=openldap-$(OPENLDAP_VERSION)
 OPENLDAP_UNZIP=zcat
@@ -28,13 +28,15 @@ OPENLDAP_MAINTAINER=Joerg Berg <caplink@gmx.net>
 OPENLDAP_DESCRIPTION=Open Lightweight Directory Access Protocol
 OPENLDAP_SECTION=net
 OPENLDAP_PRIORITY=optional
-OPENLDAP_DEPENDS=openssl, libdb, gdbm, cyrus-sasl-libs, psmisc
+#OPENLDAP_DEPENDS=openssl, libdb, gdbm, cyrus-sasl-libs, psmisc
+#Should be a conditional for libdb<6.x
+OPENLDAP_DEPENDS=openssl, gdbm, cyrus-sasl-libs, psmisc
 OPENLDAP_CONFLICTS=
 
 #
 # OPENLDAP_IPK_VERSION should be incremented when the ipk changes.
 #
-OPENLDAP_IPK_VERSION=2
+OPENLDAP_IPK_VERSION=3
 
 #
 # OPENLDAP_CONFFILES should be a list of user-editable files
@@ -54,7 +56,8 @@ OPENLDAP_PATCHES=$(OPENLDAP_SOURCE_DIR)/hostcc.patch
 OPENLDAP_CPPFLAGS=
 OPENLDAP_LDFLAGS=
 
-OPENLDAP_CONFIGURE_OPTIONS=--with-yielding-select=yes
+OPENLDAP_CONFIGURE_OPTIONS=--with-yielding-select=yes 
+OPENLDAP_CONFIGURE_OPTIONS+=--enable-bdb=no --enable-hdb=no
 ifeq ($(IPV6), no)
 OPENLDAP_CONFIGURE_OPTIONS+=--disable-ipv6
 endif

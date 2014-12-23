@@ -21,7 +21,7 @@
 #
 E2FSPROGS_SITE=http://$(SOURCEFORGE_MIRROR)/sourceforge/e2fsprogs
 
-E2FSPROGS_VERSION ?= 1.41.14
+E2FSPROGS_VERSION ?= 1.42.11
 E2FSPROGS_IPK_VERSION ?= 1
 
 E2FSPROGS_SOURCE=e2fsprogs-$(E2FSPROGS_VERSION).tar.gz
@@ -113,6 +113,7 @@ $(E2FSPROGS_BUILD_DIR)/.configured: $(DL_DIR)/$(E2FSPROGS_SOURCE) $(E2FSPROGS_PA
 #	cat $(E2FSPROGS_PATCHES) | patch -d $(BUILD_DIR)/$(E2FSPROGS_DIR) -p1
 	mv $(BUILD_DIR)/$(E2FSPROGS_DIR) $(@D)
 	sed -i -e 's|(DESTDIR)/etc|(DESTDIR)/opt/etc|g' $(@D)/misc/Makefile.in
+# We disable e4defrag since it doesn't compile
 	(cd $(@D); \
 		$(TARGET_CONFIGURE_OPTS) \
 		CPPFLAGS="$(STAGING_CPPFLAGS) $(E2FSPROGS_CPPFLAGS)" \
@@ -126,6 +127,7 @@ $(E2FSPROGS_BUILD_DIR)/.configured: $(DL_DIR)/$(E2FSPROGS_SOURCE) $(E2FSPROGS_PA
 		--disable-nls \
 		--enable-elf-shlibs \
 		--enable-rpath \
+		--disable-defrag \
 	)
 	sed -i -e '/LN_S/s|-f $$(ELF_INSTALL_DIR)/$$(ELF_SONAME)|-f $$(ELF_SONAME)|' \
 		$(@D)/lib/Makefile* \

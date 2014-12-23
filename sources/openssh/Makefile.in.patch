@@ -1,0 +1,11 @@
+--- openssh-6.7p1/Makefile.in.orig	2014-12-21 12:05:36.266022677 -0300
++++ openssh-6.7p1/Makefile.in	2014-12-21 12:07:01.875262808 -0300
+@@ -28,7 +28,7 @@
+ SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
+ PRIVSEP_PATH=@PRIVSEP_PATH@
+ SSH_PRIVSEP_USER=@SSH_PRIVSEP_USER@
+-STRIP_OPT=@STRIP_OPT@
++STRIP_OPT=
+ TEST_SHELL=@TEST_SHELL@
+ 
+ PATHS= -DSSHDIR=\"$(sysconfdir)\" \

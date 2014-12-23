@@ -21,12 +21,12 @@
 # from your name or email address.  If you leave MAINTAINER set to
 # "NSLU2 Linux" other developers will feel free to edit.
 #
-PYTHON27_VERSION=2.7.3
+PYTHON27_VERSION=2.7.9
 PYTHON27_VERSION_MAJOR=2.7
 PYTHON27_SITE=http://python.org/ftp/python/$(PYTHON27_VERSION)
 PYTHON27_DIR=Python-$(PYTHON27_VERSION)
-PYTHON27_SOURCE=$(PYTHON27_DIR).tar.bz2
-PYTHON27_UNZIP=bzcat
+PYTHON27_SOURCE=$(PYTHON27_DIR).tar.xz
+PYTHON27_UNZIP=xzcat
 
 PYTHON27_MAINTAINER=Brian Zhou<bzhou@users.sf.net>
 PYTHON27_DESCRIPTION=Python is an interpreted, interactive, object-oriented programming language.
@@ -79,15 +79,16 @@ PYTHON27_IPK=$(BUILD_DIR)/python27_$(PYTHON27_VERSION)-$(PYTHON27_IPK_VERSION)_$
 # which they should be applied to the source code.
 #
 # http://mail.python.org/pipermail/patches/2004-October/016312.html
-PYTHON27_PATCHES=\
-	$(PYTHON27_SOURCE_DIR)/Makefile.pre.in.patch \
-	$(PYTHON27_SOURCE_DIR)/README.patch \
-	$(PYTHON27_SOURCE_DIR)/config.guess.patch \
-	$(PYTHON27_SOURCE_DIR)/config.sub.patch \
-	$(PYTHON27_SOURCE_DIR)/configure.in.patch \
-	$(PYTHON27_SOURCE_DIR)/setup.py.patch \
-	$(PYTHON27_SOURCE_DIR)/Lib-site.py.patch \
-	$(PYTHON27_SOURCE_DIR)/Lib-distutils-distutils.cfg.patch \
+PYTHON27_PATCHES=
+#PYTHON27_PATCHES=\
+#	$(PYTHON27_SOURCE_DIR)/Makefile.pre.in.patch \
+#	$(PYTHON27_SOURCE_DIR)/README.patch \
+#	$(PYTHON27_SOURCE_DIR)/config.guess.patch \
+#	$(PYTHON27_SOURCE_DIR)/config.sub.patch \
+#	$(PYTHON27_SOURCE_DIR)/configure.in.patch \
+#	$(PYTHON27_SOURCE_DIR)/setup.py.patch \
+#	$(PYTHON27_SOURCE_DIR)/Lib-site.py.patch \
+#	$(PYTHON27_SOURCE_DIR)/Lib-distutils-distutils.cfg.patch \
 
 ifeq ($(NCURSES_FOR_OPTWARE_TARGET), ncurses)
 PYTHON27_PATCHES+= $(PYTHON27_SOURCE_DIR)/disable-ncursesw.patch
@@ -134,7 +135,7 @@ endif
 	$(MAKE) autoconf-host-stage
 	rm -rf $(BUILD_DIR)/$(PYTHON27_DIR) $(@D)
 	$(PYTHON27_UNZIP) $(DL_DIR)/$(PYTHON27_SOURCE) | tar -C $(BUILD_DIR) -xf -
-	cat $(PYTHON27_PATCHES) | patch -bd $(BUILD_DIR)/$(PYTHON27_DIR) -p1
+#	cat $(PYTHON27_PATCHES) | patch -bd $(BUILD_DIR)/$(PYTHON27_DIR) -p1
 	$(HOST_STAGING_PREFIX)/bin/autoreconf -vif $(BUILD_DIR)/$(PYTHON27_DIR)
 	mkdir -p $(@D)
 	cd $(@D); (\
@@ -160,6 +161,7 @@ endif
 		--mandir=/opt/man \
 		--enable-shared \
 		--enable-unicode=ucs4 \
+		--disable-ipv6 \
 	)
 	touch $@
 

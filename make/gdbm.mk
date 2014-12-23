@@ -50,6 +50,8 @@ $(GDBM_BUILD_DIR)/.configured: $(DL_DIR)/$(GDBM_SOURCE) $(GDBM_PATCHES) make/gdb
 		--disable-nls \
 		--disable-static \
 	);
+#		--enable-libgdbm-compat \
+
 	touch $@
 
 gdbm-unpack: $(GDBM_BUILD_DIR)/.configured
@@ -63,7 +65,8 @@ gdbm: $(GDBM_BUILD_DIR)/.built
 
 $(GDBM_BUILD_DIR)/.staged: $(GDBM_BUILD_DIR)/.built
 	rm -f $@
-	$(MAKE) -C $(GDBM_BUILD_DIR) INSTALL_ROOT=$(STAGING_DIR) install install-compat
+#	$(MAKE) -C $(GDBM_BUILD_DIR) INSTALL_ROOT=$(STAGING_DIR) install install-compat
+	$(MAKE) -C $(GDBM_BUILD_DIR) DESTDIR=$(STAGING_DIR) install 
 	rm -rf $(STAGING_LIB_DIR)/libgdbm.la
 	rm -rf $(STAGING_LIB_DIR)/libgdbm_compat.la
 	touch $@

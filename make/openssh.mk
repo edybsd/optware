@@ -5,7 +5,7 @@
 #########################################################
 
 OPENSSH_SITE=ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable
-OPENSSH_VERSION=5.9p1
+OPENSSH_VERSION=6.7p1
 OPENSSH_SOURCE=openssh-$(OPENSSH_VERSION).tar.gz
 OPENSSH_DIR=openssh-$(OPENSSH_VERSION)
 OPENSSH_UNZIP=zcat
@@ -27,7 +27,7 @@ OPENSSH_CONFFILES=\
 	/opt/etc/default/openssh \
 	/opt/etc/init.d/S40sshd
 
-OPENSSH_PATCHES=$(OPENSSH_SOURCE_DIR)/Makefile.patch
+OPENSSH_PATCHES=$(OPENSSH_SOURCE_DIR)/Makefile.in.patch
 
 #
 # If the compilation of the package requires additional
@@ -129,6 +129,7 @@ $(OPENSSH_BUILD_DIR)/.configured: $(DL_DIR)/$(OPENSSH_SOURCE) $(OPENSSH_PATCHES)
 		--without-x \
 		--with-tcp-wrappers=$(STAGING_DIR)/opt \
 		--with-xauth=/opt/bin/xauth \
+		--without-pie \
 	)
 	touch $@
 
